@@ -51,6 +51,8 @@ Keywords: Application Prototype, [Data modeling](https://en.wikipedia.org/wiki/D
 
 ### Application Prototype
 
+![](https://raw.githubusercontent.com/APITEA/iNTERSHiP/master/D062FB13-BF80-4E0F-8DB7-449C7EFFE012.jpeg)
+
 ### Data Modeling
 
 Data modeling in software engineering is the process of creating a data model for an information system by applying certain formal techniques.
