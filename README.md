@@ -56,7 +56,7 @@ Keywords: Application Prototype, [Data modeling](https://en.wikipedia.org/wiki/D
 Data modeling in software engineering is the process of creating a data model for an information system by applying certain formal techniques.
 
 ```dart
-class Instance {
+class Application {
   
   final String name;
   final String url;
@@ -66,9 +66,9 @@ class Instance {
 ```
 
 ```dart
-class InstanceRepository {
+class ApplicationRepository {
 
-  List<Instance> getInstances() {
+  List<Application> getApplications() {
     
     //TODO
     
