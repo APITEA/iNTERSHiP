@@ -47,6 +47,53 @@ Android Studio provides the fastest tools for building apps on every type of And
 
 ## Day 2
 
-Keywords:
+Keywords: Application Prototype, [Data modeling](https://en.wikipedia.org/wiki/Data_modeling), [Repository Pattern](https://medium.com/@krzychukosobudzki/repository-design-pattern-bc490b256006), [Flutter ListView](https://www.youtube.com/watch?v=Lf9DwdVbBuM)
+
+### Application Prototype
+
+### Data Modeling
+
+Data modeling in software engineering is the process of creating a data model for an information system by applying certain formal techniques.
+
+```dart
+class Instance {
+  
+  final String name;
+  final String url;
+
+  Instance({@required this.name, @required this.url});
+}
+```
+
+```dart
+class InstanceRepository {
+
+  List<Instance> getInstances() {
+    
+    //TODO
+    
+  }
+}
+```
+
+### Flutter ListView
+
+A scrollable list of widgets arranged linearly.
+
+ListView is the most commonly used scrolling widget. It displays its children one after another in the scroll direction. In the cross axis, the children are required to fill the ListView.
+
+[![](http://img.youtube.com/vi/Lf9DwdVbBuM/0.jpg)](http://www.youtube.com/watch?v=Lf9DwdVbBuM "")
 
 ### TODO
+
+1. Add data model
+1. Add data repository
+1. Add ListView
+
+## Day 3
+
+Keywords: [Flutter Navigation](https://flutter.dev/docs/cookbook/navigation/navigation-basics)
+
+### TODO
+
+1. Add navigation to detail page and back
