@@ -51,7 +51,7 @@ Keywords: Application Prototype, [Data modeling](https://en.wikipedia.org/wiki/D
 
 ### Application Prototype
 
-![](https://raw.githubusercontent.com/APITEA/iNTERSHiP/master/D062FB13-BF80-4E0F-8DB7-449C7EFFE012.jpeg)
+<img src="https://raw.githubusercontent.com/APITEA/iNTERSHiP/master/D062FB13-BF80-4E0F-8DB7-449C7EFFE012.jpeg" width="250">
 
 ### Data Modeling
 
@@ -84,7 +84,7 @@ A scrollable list of widgets arranged linearly.
 
 ListView is the most commonly used scrolling widget. It displays its children one after another in the scroll direction. In the cross axis, the children are required to fill the ListView.
 
-[![](http://img.youtube.com/vi/Lf9DwdVbBuM/0.jpg)](http://www.youtube.com/watch?v=Lf9DwdVbBuM "")
+![](http://img.youtube.com/vi/Lf9DwdVbBuM/0.jpg)](http://www.youtube.com/watch?v=Lf9DwdVbBuM =250x)
 
 ### TODO
 
