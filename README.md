@@ -94,8 +94,29 @@ ListView is the most commonly used scrolling widget. It displays its children on
 
 ## Day 3
 
-Keywords: [Flutter Navigation](https://flutter.dev/docs/cookbook/navigation/navigation-basics)
+Keywords: [Master Detail](https://en.wikipedia.org/wiki/Master–detail_interface), [Flutter Navigation](https://flutter.dev/docs/cookbook/navigation/), [Multi Screen](https://medium.com/flutter-community/developing-for-multiple-screen-sizes-and-orientations-in-flutter-fragments-in-flutter-a4c51b849434)
+
+### Master Detail
+
+In computer user interface design, a master–detail interface displays a master list and the details for the currently selected item.
+
+### Flutter Navigation
+
+Most apps contain several screens for displaying different types of information. For example, an app might have a screen that displays products. Users can then tap the image of a product to get more detailed information on a new screen.
+
+[![](http://img.youtube.com/vi/nP2KEFnj7Ag/0.jpg)](http://www.youtube.com/watch?v=nP2KEFnj7Ag "")
+
+### Multi Screen
+
+Mobile applications need to support a wide range of device sizes, pixel densities and orientations. Apps need to be able to scale well, handle orientation changes and persist data through all these. Flutter gives you the capability to choose the way to tackle these challenges instead of only giving one particular solution.
+
+<a href="https://d33wubrfki0l68.cloudfront.net/a420eb846b7feedd2cdf446451cfd70439a4b964/14a2d/images/implementing-master-detail-flow/end-result.gif"><img src="https://d33wubrfki0l68.cloudfront.net/a420eb846b7feedd2cdf446451cfd70439a4b964/14a2d/images/implementing-master-detail-flow/end-result.gif" width="250"></a>
+
 
 ### TODO
 
+1. Add `imageURL` to `Application` model and use it for display in `ListView`
 1. Add navigation to detail page and back
+1. Design `ListView` and `DetailView` as in:
+
+<img src="https://raw.githubusercontent.com/APITEA/iNTERSHiP/master/master-detail.png" width="600">
