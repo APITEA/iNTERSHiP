@@ -63,7 +63,7 @@ class Application {
   final String name;
   final String url;
 
-  Instance({@required this.name, @required this.url});
+  Application({@required this.name, @required this.url});
 }
 ```
 
