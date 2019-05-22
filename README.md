@@ -6,6 +6,7 @@ iNTERSHiP
 * [Day 1](#day-1)
 * [Day 2](#day-2)
 * [Day 3](#day-3)
+* [Day 4](#day-4)
 
 ## Day 1
 
@@ -121,3 +122,49 @@ Mobile applications need to support a wide range of device sizes, pixel densitie
 1. Design `ListView` and `DetailView` as in:
 
 <img src="https://raw.githubusercontent.com/APITEA/iNTERSHiP/master/master-detail.png" width="600">
+
+## Day 4
+
+Keywords: [Continuous integration](https://flutter.dev/docs/cookbook/navigation/), [Testing Flutter Apps](https://flutter.dev/docs/testing)
+
+### Continuous integration
+
+Continuous Integration (CI) is a development practice that requires developers to integrate code into a shared repository several times a day. Each check-in is then verified by an automated build, allowing teams to detect problems early. 
+
+By integrating regularly, you can detect errors quickly, and locate them more easily.
+
+[![](http://img.youtube.com/vi/b2l4zTS8lPg/0.jpg)](http://www.youtube.com/watch?v=b2l4zTS8lPg "")
+
+### Testing Flutter Apps
+
+The more features your app has, the harder it is to test manually. Automated tests help ensure that your app performs correctly before you publish it, while retaining your feature and bug fix velocity.
+
+Automated testing falls into a few categories:
+
+* A **unit test** tests a single function, method, or class.
+* A **widget test** (in other UI frameworks referred to as component test) tests a single widget.
+* An **integration test** tests a complete app or a large part of an app.
+
+[An introduction to widget testing](https://flutter.dev/docs/cookbook/testing/widget/introduction)
+
+### TODO
+
+1. Add real Application data
+1. Create Widget test for `ListView` and `DetailView`
+1. Testing Continuous integration - `fail` -> `fix` ([Setup CI/CD Pipeline for your Flutter App using CircleCI](https://medium.com/flutter-community/setup-ci-cd-pipeline-for-your-flutter-app-using-circleci-ef07e39982ab)) 
+
+#### Data
+```
+name: Promitea.com
+url: https://www.promitea.com
+```
+
+```
+name: Demo Promitea
+url: https://demo.promitea.com
+```
+
+```
+name: Test Promitea
+url: https://test.promitea.com
+```
