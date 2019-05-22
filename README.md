@@ -7,6 +7,7 @@ iNTERSHiP
 * [Day 2](#day-2)
 * [Day 3](#day-3)
 * [Day 4](#day-4)
+* [Day 5](#day-5)
 
 ## Day 1
 
@@ -151,7 +152,9 @@ Automated testing falls into a few categories:
 
 1. Add real Application data
 1. Create Widget test for `ListView` and `DetailView`
-1. Testing Continuous integration - `fail` -> `fix` ([Setup CI/CD Pipeline for your Flutter App using CircleCI](https://medium.com/flutter-community/setup-ci-cd-pipeline-for-your-flutter-app-using-circleci-ef07e39982ab)) 
+1. Testing Continuous integration - `fail` -> `fix` 
+ * [![CircleCI](https://circleci.com/gh/APITEA/iNTERSHiP.svg?style=svg)](https://circleci.com/gh/APITEA/iNTERSHiP) 
+ * [Setup CI/CD Pipeline for your Flutter App using CircleCI](https://medium.com/flutter-community/setup-ci-cd-pipeline-for-your-flutter-app-using-circleci-ef07e39982ab)
 
 #### Data
 ```
@@ -168,3 +171,5 @@ url: https://demo.promitea.com
 name: Test Promitea
 url: https://test.promitea.com
 ```
+
+## Day 5

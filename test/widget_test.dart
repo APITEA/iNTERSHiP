@@ -12,4 +12,8 @@ import 'package:spikey/main.dart';
 
 void main() {
 
+  test('simple', () {
+    expect(true, true);
+  });
+
 }
