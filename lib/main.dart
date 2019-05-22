@@ -79,7 +79,7 @@ class DetailView extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: new Center(child: new Text(app.name)),
+        title: new Center(child: new Text(app.name)),//centerTitle: true,
         backgroundColor: Colors.green,
       ),
     );
