@@ -9,7 +9,10 @@ void main(){
   runApp(MaterialApp(
     title: "Spikey",
     home: Scaffold(
-      appBar: AppBar(title: Text("Spikey")),
+      appBar: AppBar(
+          title: Text("Spikey"),
+          backgroundColor: Colors.green,
+      ),
       body: getListView(applicationRepository),
     ),
   ));
@@ -39,10 +42,10 @@ Widget getListView(ApplicationRepository applicationRepository) {
       .getApplications()
       .map((app) =>
       ListTile(
-          leading: (Image.network("https://www.i60.cz/images/pes1-2-1.jpg")),
+          leading: (Image.network(app.pic)),
           title: Text(app.name),
           subtitle: Text(app.url),
-          trailing: Icon(Icons.search)
+          trailing: Icon(Icons.arrow_forward_ios),
       ));
 
   var listView = ListView(children: applications.toList());
