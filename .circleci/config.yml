@@ -37,3 +37,7 @@ jobs:
 
       - store_test_results:
           path: /tmp/test-results
+
+      - store_artifacts:
+          path: build/app/outputs/apk/release/app-release.apk
+          destination: spikey.apk
