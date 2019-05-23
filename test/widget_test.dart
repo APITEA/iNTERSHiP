@@ -11,13 +11,20 @@ import 'package:spikey/main.dart';
 import 'package:spikey/model/application.dart';
 
 void main() {
-  testWidgets('MyWidget has a title', (WidgetTester tester) async {
-   var app = Application(name: "name",url: "www.google.com", pic:"");
-     await tester.pumpWidget(DetailView(app: app));
 
-    final titleFinder = find.widgetWithText(Text, 'name');
+  Widget buildTestableWidget(Widget widget) {
+    return MediaQuery(data: MediaQueryData(), child: MaterialApp(home: widget));
+  }
 
-    expect(titleFinder, findsOneWidget);
+  testWidgets('Testing DetailView', (WidgetTester tester) async {
+
+    var app = Application(name: 'name', url: 'www.google.com', pic: '');
+    await tester.pumpWidget(buildTestableWidget(DetailView(app: app)));
+
+    var nameFinder = find.text('name');
+    var urlFinder = find.text('www.google.com');
+
+    expect(nameFinder, findsOneWidget);
+    expect(urlFinder, findsNothing);
   });
 }
-
