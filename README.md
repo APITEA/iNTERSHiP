@@ -8,6 +8,7 @@ iNTERSHiP
 * [Day 3](#day-3)
 * [Day 4](#day-4)
 * [Day 5](#day-5)
+* [Day 6](#day-6)
 
 ## Day 1
 
@@ -173,3 +174,20 @@ url: https://test.promitea.com
 ```
 
 ## Day 5
+
+Keywords: [Continuous delivery](https://flutter.dev/docs/cookbook/navigation/)
+
+### Continuous Delivery
+
+Continuous Delivery can help large organizations become as lean, agile and innovative as startups. Through reliable, low-risk releases, Continuous Delivery makes it possible to continuously adapt software in line with user feedback, shifts in the market and changes to business strategy. Test, support, development and operations work together as one delivery team to automate and streamline the build-test-release process.
+
+[![](http://img.youtube.com/vi/HnWuIjUw_Q8/0.jpg)](http://www.youtube.com/watch?v=HnWuIjUw_Q8 "")
+
+### TODO
+
+1. Try to app on real device
+    * https://circleci.com/gh/APITEA/iNTERSHiP/tree/master > latest build > Artifacts
+1. Improve application
+
+## Day 6
+
