@@ -8,12 +8,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:spikey/main.dart';
-
 void main() {
+  testWidgets('MyWidget has a title', (WidgetTester tester) async {
+    await tester.pumpWidget(MyWidget(title: 'T', message: "M",));
 
-  test('simple', () {
-    expect(true, true);
+    final titleFinder = find.text('T');
+
+    expect(titleFinder, findsOneWidget);
   });
+}
 
+class MyWidget extends StatelessWidget {
+  final String title;
+  final String message;
+
+  const MyWidget({
+    Key key,
+    @required this.title,
+    @required this.message,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Spikey Demo',
+      home: Scaffold(
+          appBar: AppBar(
+        title: Text(title),
+      )),
+    );
+  }
 }

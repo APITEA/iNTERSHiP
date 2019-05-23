@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-
 import 'model/application.dart';
 import 'model/repository.dart';
 
@@ -12,6 +11,8 @@ void main() {
       home: Scaffold(
           appBar: AppBar(
             title: Text("Spikey"),
+            textTheme: TextTheme(
+                title: TextStyle(fontSize: 36, fontStyle: FontStyle.normal)),
             centerTitle: true,
             backgroundColor: Colors.green,
           ),
@@ -54,24 +55,32 @@ class ListItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        contentPadding: EdgeInsets.all(3) ,
+        contentPadding: EdgeInsets.all(5),
         leading: (Image.network(app.pic)),
-        title: Text(app.name),
+        title: Text(app.name,
+            style: DefaultTextStyle
+                .of(context)
+                .style
+                .apply(fontSizeFactor: 2)
+        ),
         subtitle: Text(app.url),
         trailing: IconButton(
             icon: Icon(Icons.arrow_forward_ios),
-            splashColor: Colors.red,  // barva při stisknutí
+            splashColor: Colors.green, // barva při stisknutí
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DetailView(app: this.app,)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        DetailView(
+                          app: this.app,
+                        )),
               );
             }));
   }
 }
 
 class DetailView extends StatelessWidget {
-
   final Application app;
 
   DetailView({this.app});
@@ -81,20 +90,12 @@ class DetailView extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text(app.name,),
+        title: Text(
+          app.name,
+        ),
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
-    );
+      );
   }
 }
-
-//  //@override
-//  //Widget build(BuildContext context) {
-//      //floatingActionButton: FloatingActionButton(
-//        //onPressed: _incrementCounter,
-//        tooltip: "Increment",
-//        child: Icon(Icons.add_circle),
-//      ),
-//    );
-//  }
