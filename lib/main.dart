@@ -11,7 +11,8 @@ void main() {
       title: "Spikey",
       home: Scaffold(
           appBar: AppBar(
-            title: new Center(child: new Text("Spikey", textAlign: TextAlign.center)),
+            title: Text("Spikey"),
+            centerTitle: true,
             backgroundColor: Colors.green,
           ),
           body: getListView(applicationRepository)),
@@ -59,6 +60,7 @@ class ListItemView extends StatelessWidget {
         subtitle: Text(app.url),
         trailing: IconButton(
             icon: Icon(Icons.arrow_forward_ios),
+            splashColor: Colors.red,  // barva při stisknutí
             onPressed: () {
               Navigator.push(
                 context,
@@ -79,7 +81,8 @@ class DetailView extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: new Center(child: new Text(app.name)),//centerTitle: true,
+        title: Text(app.name,),
+        centerTitle: true,
         backgroundColor: Colors.green,
       ),
     );
