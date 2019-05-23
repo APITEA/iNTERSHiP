@@ -5,6 +5,35 @@ jobs:
       - image: cirrusci/flutter
     steps:
       - checkout
-      - run: flutter doctor
-      - run: flutter test
-      - run: flutter -v build apk
+
+      - run:
+          name: Check flutter status
+          command: flutter doctor
+
+      - run:
+          name: Install JUnitReport
+          command: pub global activate junitreport
+
+      - run:
+          name: Create directory structure for test-results
+          command: mkdir --parents /tmp/test-results/flutter
+
+      - run:
+          name: Get Flutter packages to avoid stdout in JSON
+          command: flutter packages get
+
+      - run:
+          name: Run Flutter tests.
+          command: flutter test --machine > /tmp/test-results/flutter/TEST-report.json
+
+      - run:
+          name: Convert Flutter tests to JUnit
+          command: $HOME/.pub-cache/bin/tojunit --input /tmp/test-results/flutter/TEST-report.json --output /tmp/test-results/flutter/junit.xml
+          when: always
+
+      - run:
+          name: Build APK
+          command: flutter -v build apk
+
+      - store_test_results:
+          path: /tmp/test-results
