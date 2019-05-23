@@ -58,11 +58,7 @@ class ListItemView extends StatelessWidget {
         contentPadding: EdgeInsets.all(5),
         leading: (Image.network(app.pic)),
         title: Text(app.name,
-            style: DefaultTextStyle
-                .of(context)
-                .style
-                .apply(fontSizeFactor: 2)
-        ),
+            style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2)),
         subtitle: Text(app.url),
         trailing: IconButton(
             icon: Icon(Icons.arrow_forward_ios),
@@ -71,8 +67,7 @@ class ListItemView extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        DetailView(
+                    builder: (context) => DetailView(
                           app: this.app,
                         )),
               );
@@ -96,6 +91,6 @@ class DetailView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
-      );
+    );
   }
 }
