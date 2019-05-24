@@ -47,7 +47,7 @@ jobs:
           destination: spikey.apk
 
       - persist_to_workspace:
-          root: build
+          root: .
           paths:
             - build/app/outputs/apk/release/
 
@@ -56,12 +56,12 @@ jobs:
       - image: cibuilds/github:0.12
     steps:
       - attach_workspace:
-          at: build
+          at: .
       - run:
           name: "Publish Release on GitHub"
           command: |
             VERSION=1.0
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -recreate ${CIRCLE_BRANCH} build/spikey.apk
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -recreate ${CIRCLE_BRANCH} spikey.apk
 
 workflows:
   version: 2
