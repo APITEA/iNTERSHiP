@@ -183,10 +183,12 @@ Continuous Delivery can help large organizations become as lean, agile and innov
 
 [![](http://img.youtube.com/vi/HnWuIjUw_Q8/0.jpg)](http://www.youtube.com/watch?v=HnWuIjUw_Q8 "")
 
+The `spikey.apk` is continuous delivered to [GitHub Releases](https://github.com/APITEA/iNTERSHiP/releases/tag/master).
+
 ### TODO
 
 1. Try to app on real device
-    * https://circleci.com/gh/APITEA/iNTERSHiP/tree/master > latest build > Artifacts
+    * [spikey.apk](https://github.com/APITEA/iNTERSHiP/releases/download/master/spikey.apk)
 1. Improve application
 
 ## Day 6
