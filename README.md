@@ -9,6 +9,7 @@ iNTERSHiP
 * [Day 4](#day-4)
 * [Day 5](#day-5)
 * [Day 6](#day-6)
+* [Day 7](#day-7)
 
 ## Day 1
 
@@ -193,3 +194,26 @@ The `spikey.apk` is continuous delivered to [GitHub Releases](https://github.com
 
 ## Day 6
 
+### Dart XML
+
+Dart XML is a lightweight library for parsing, traversing, querying, transforming and building XML documents. [[pub.dev]](https://pub.dev/packages/xml)
+
+### modern_charts
+
+A package for creating simple yet modern looking charts. [[pub.dev]](https://pub.dev/packages/modern_charts/)
+
+### TODO 
+
+#### DetailView
+
+1. Parse `promitea-status` by `Dart XML`
+    * `https://test.promitea.com/promitea-status`
+1. Add Gauge Graphs with Memory
+    * `javaMaxMemory` vs `javaTotalMemory`
+1. Add Gauge Graphs with Disk
+    * `freePhysicalMemorySize` vs `totalPhysicalMemory`
+1. Add Number with active users
+    * `activeSessions`
+1. Add pull-to-refresh to refresh graphs
+
+## Day 7
