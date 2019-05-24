@@ -9,6 +9,24 @@ void main() {
     MaterialApp(
       title: "Spikey",
       home: Scaffold(
+          drawer: Drawer(
+            child: ListView(
+              children: <Widget>[
+                DrawerHeader(
+                  child: Text("Hlavicka"),
+                  decoration: BoxDecoration(color: Colors.blue),
+                ),
+                ListTile(
+                  title: Text("Item 1"),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                ),
+                ListTile(
+                  title: Text("Item 2"),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                ),
+              ],
+            ),
+          ),
           appBar: AppBar(
             title: Text("Spikey"),
             textTheme: TextTheme(
