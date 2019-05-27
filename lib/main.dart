@@ -9,7 +9,8 @@ void main() {
     MaterialApp(
       title: "Spikey",
       home: Scaffold(
-          drawer: Drawer(   // suplik pro predmety
+          drawer: Drawer(
+            // suplik pro predmety
             child: ListView(
               children: <Widget>[
                 DrawerHeader(
