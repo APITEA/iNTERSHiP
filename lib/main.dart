@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "model/application.dart";
 import "model/repository.dart";
+import 'package:http/http.dart' as http;
+import 'package:xml/xml.dart' as xml;
 
 void main() {
   var applicationRepository = ApplicationRepository();
@@ -40,22 +42,6 @@ void main() {
   );
 }
 
-//class MyApp extends StatelessWidget {
-
-//@override
-//Widget build(BuildContext context) {
-//return MaterialApp(
-//title: "Spikey App",
-//theme: ThemeData(
-//primarySwatch: Colors.green
-//),
-//home: Scaffold(
-//body: getListView(),
-//),
-//);
-//}
-//}
-
 Widget getListView(ApplicationRepository applicationRepository) {
   var applications = applicationRepository
       .getApplications()
@@ -86,7 +72,7 @@ class ListItemView extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailView(
+                    builder: (context) => DetailViewStatefull(
                           app: this.app,
                         )),
               );
@@ -110,6 +96,101 @@ class DetailView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
+    );
+  }
+}
+
+class DetailViewStatefull extends StatefulWidget {
+  final Application app;
+
+  DetailViewStatefull({this.app});
+
+  @override
+  State<StatefulWidget> createState() {
+    return new DetailViewState(app: app);
+  }
+}
+
+class DetailViewState extends State<DetailViewStatefull> {
+  var _activeSessions;
+  var _javaMaxMemory;
+  var _javaTotalMemory;
+  var _freePhysicalMemorySize;
+  var _totalPhysicalMemory;
+
+  final Application app;
+
+  DetailViewState({this.app});
+
+  @override
+  void initState() {
+    http.get(app.url + "/promitea-status").then((result) {
+      var xmlContent = result.body;
+      var document = xml.parse(xmlContent);
+
+      var activeSessions = document
+          .findElements("monitoringStatus")
+          .first
+          .findElements("activeSessions")
+          .first
+          .text;
+      var javaMaxMemory = document
+          .findElements("monitoringStatus")
+          .first
+          .findElements("javaMaxMemory")
+          .first
+          .text;
+      var javaTotalMemory = document
+          .findElements("monitoringStatus")
+          .first
+          .findElements("javaTotalMemory")
+          .first
+          .text;
+      var freePhysicalMemorySize = document
+          .findElements("monitoringStatus")
+          .first
+          .findElements("freePhysicalMemorySize")
+          .first
+          .text;
+      var totalPhysicalMemory = document
+          .findElements("monitoringStatus")
+          .first
+          .findElements("totalPhysicalMemory")
+          .first
+          .text;
+      setState(() {
+        _activeSessions = activeSessions;
+        _javaMaxMemory = javaMaxMemory;
+        _javaTotalMemory = javaTotalMemory;
+        _freePhysicalMemorySize = freePhysicalMemorySize;
+        _totalPhysicalMemory = totalPhysicalMemory;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_activeSessions == null) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            app.name,
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          app.name,
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+      ),
+      body: new Text(_activeSessions),
     );
   }
 }
