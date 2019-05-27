@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import 'model/application.dart';
-import 'model/repository.dart';
+import "model/application.dart";
+import "model/repository.dart";
 
 void main() {
   var applicationRepository = ApplicationRepository();
@@ -9,7 +9,7 @@ void main() {
     MaterialApp(
       title: "Spikey",
       home: Scaffold(
-          drawer: Drawer(
+          drawer: Drawer(   // suplik pro predmety
             child: ListView(
               children: <Widget>[
                 DrawerHeader(
