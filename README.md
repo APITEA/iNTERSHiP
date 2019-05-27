@@ -10,6 +10,8 @@ iNTERSHiP
 * [Day 5](#day-5)
 * [Day 6](#day-6)
 * [Day 7](#day-7)
+    * [Day 8](#day-8)
+* [Day 9](#day-9)
 
 ## Day 1
 
@@ -198,6 +200,23 @@ The `spikey.apk` is continuous delivered to [GitHub Releases](https://github.com
 
 Dart XML is a lightweight library for parsing, traversing, querying, transforming and building XML documents. [[pub.dev]](https://pub.dev/packages/xml)
 
+### TODO 
+
+#### DetailView
+
+1. Fix Internet Connection
+1. Parse `promitea-status` by `Dart XML`
+    * `https://test.promitea.com/promitea-status`
+1. Get Memory data:
+    * `javaMaxMemory` vs `javaTotalMemory`
+1. Get Disk data:
+    * `freePhysicalMemorySize` vs `totalPhysicalMemory`
+1. Get Users data:
+    * `activeSessions`
+1. Add pull-to-refresh to refresh graphs
+
+## Day 7 
+
 ### modern_charts
 
 A package for creating simple yet modern looking charts. [[pub.dev]](https://pub.dev/packages/modern_charts/)
@@ -206,14 +225,25 @@ A package for creating simple yet modern looking charts. [[pub.dev]](https://pub
 
 #### DetailView
 
-1. Parse `promitea-status` by `Dart XML`
-    * `https://test.promitea.com/promitea-status`
-1. Add Gauge Graphs with Memory
-    * `javaMaxMemory` vs `javaTotalMemory`
-1. Add Gauge Graphs with Disk
-    * `freePhysicalMemorySize` vs `totalPhysicalMemory`
-1. Add Number with active users
-    * `activeSessions`
+1. Add Gauge Graphs with Memory data
+1. Add Gauge Graphs with Disk data
+1. Add Number with Users data
+
+## Day 8
+
+### Pull-to-refresh
+
+Pull-to-refresh is a touchscreen gesture that consists of touching the screen of a computing device with a finger or pressing a button on a pointing device, dragging the screen downward with the finger or pointing device, and then releasing it, as a signal to the application to refresh the contents of the screen.
+
+[![](http://img.youtube.com/vi/5n8xP4ukzlM/0.jpg)](http://www.youtube.com/watch?v=5n8xP4ukzlM "")
+
+### TODO
+
+#### Application
+
+1. Add custom icon as icon of the Spikey Application
+
+#### DetailView
+
 1. Add pull-to-refresh to refresh graphs
 
-## Day 7
