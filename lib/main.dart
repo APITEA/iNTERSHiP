@@ -3,6 +3,7 @@ import "model/application.dart";
 import "model/repository.dart";
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
+import 'package:charts_flutter/flutter.dart' as charts;
 
 void main() {
   var applicationRepository = ApplicationRepository();
@@ -113,7 +114,7 @@ class DetailViewStatefull extends StatefulWidget {
 
 class DetailViewState extends State<DetailViewStatefull> {
   var _activeSessions;
-  var _javaMaxMemory;
+  var _javaFreeMemory;
   var _javaTotalMemory;
   var _freePhysicalMemorySize;
   var _totalPhysicalMemory;
@@ -134,10 +135,10 @@ class DetailViewState extends State<DetailViewStatefull> {
           .findElements("activeSessions")
           .first
           .text;
-      var javaMaxMemory = document
+      var javaFreeMemory = document
           .findElements("monitoringStatus")
           .first
-          .findElements("javaMaxMemory")
+          .findElements("javaFreeMemory")
           .first
           .text;
       var javaTotalMemory = document
@@ -160,10 +161,10 @@ class DetailViewState extends State<DetailViewStatefull> {
           .text;
       setState(() {
         _activeSessions = activeSessions;
-        _javaMaxMemory = javaMaxMemory;
-        _javaTotalMemory = javaTotalMemory;
-        _freePhysicalMemorySize = freePhysicalMemorySize;
-        _totalPhysicalMemory = totalPhysicalMemory;
+        _javaFreeMemory = int.parse(javaFreeMemory);
+        _javaTotalMemory = int.parse(javaTotalMemory);
+        _freePhysicalMemorySize = int.parse(freePhysicalMemorySize);
+        _totalPhysicalMemory = int.parse(totalPhysicalMemory);
       });
     });
   }
@@ -179,6 +180,9 @@ class DetailViewState extends State<DetailViewStatefull> {
           centerTitle: true,
           backgroundColor: Colors.green,
         ),
+        body: new Center(
+          child: new CircularProgressIndicator(),
+        ),
       );
     }
 
@@ -190,7 +194,57 @@ class DetailViewState extends State<DetailViewStatefull> {
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
-      body: new Text(_activeSessions),
+      body: Center(
+          child: Chart.withData(createData(
+              _javaTotalMemory - _javaFreeMemory, _javaTotalMemory))),
     );
   }
+
+  List<charts.Series<SeriesData, int>> createData(int part, int total) {
+    final data = [
+      new SeriesData(0, part),
+      new SeriesData(1, total),
+      // new SeriesData(2, 25),
+      // new SeriesData(3, 5),
+    ];
+
+    return [
+      new charts.Series<SeriesData, int>(
+        id: 'Sales',
+        domainFn: (SeriesData sales, _) => sales.all,
+        measureFn: (SeriesData sales, _) => sales.amount,
+        data: data,
+        labelAccessorFn: (SeriesData row, _) => '${row.all}: ${row.amount}',
+      )
+    ];
+  }
+}
+
+class Chart extends StatelessWidget {
+  final List<charts.Series> seriesList;
+  final bool animate;
+
+  Chart(this.seriesList, {this.animate});
+
+  factory Chart.withData(List<charts.Series<SeriesData, int>> data) {
+    return new Chart(
+      data,
+      animate: true,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new charts.PieChart(seriesList,
+        animate: animate,
+        defaultRenderer: new charts.ArcRendererConfig(arcWidth: 100,
+            arcRendererDecorators: [new charts.ArcLabelDecorator()]));
+  }
+}
+
+class SeriesData {
+  final int all;
+  final int amount;
+
+  SeriesData(this.all, this.amount);
 }
