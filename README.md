@@ -10,8 +10,9 @@ iNTERSHiP
 * [Day 5](#day-5)
 * [Day 6](#day-6)
 * [Day 7](#day-7)
-    * [Day 8](#day-8)
+* [Day 8](#day-8)
 * [Day 9](#day-9)
+* [Day 10](#day-10)
 
 ## Day 1
 
@@ -207,9 +208,9 @@ Dart XML is a lightweight library for parsing, traversing, querying, transformin
 1. Fix Internet Connection
 1. Parse `promitea-status` by `Dart XML`
     * `https://test.promitea.com/promitea-status`
-1. Get Memory data:
-    * `javaMaxMemory` vs `javaTotalMemory`
-1. Get Disk data:
+1. Get JAVA Memory data:
+    * `javaFreeMemory` vs `javaTotalMemory`
+1. Get Physical Memory data:
     * `freePhysicalMemorySize` vs `totalPhysicalMemory`
 1. Get Users data:
     * `activeSessions`
