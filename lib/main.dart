@@ -195,7 +195,7 @@ class DetailViewState extends State<DetailViewStatefull> {
         backgroundColor: Colors.green,
       ),
       body: Center(
-          child: Chart.withData(createData(
+          child: ChartJavaMemory.withData(createData(
               _javaTotalMemory - _javaFreeMemory, _javaTotalMemory))),
     );
   }
@@ -210,24 +210,24 @@ class DetailViewState extends State<DetailViewStatefull> {
 
     return [
       new charts.Series<SeriesData, int>(
-        id: 'Sales',
+        id: 'Data',
         domainFn: (SeriesData sales, _) => sales.all,
         measureFn: (SeriesData sales, _) => sales.amount,
         data: data,
-        labelAccessorFn: (SeriesData row, _) => '${row.all}: ${row.amount}',
+        labelAccessorFn: (SeriesData row, _) => '${row.getTitle()}: ${row.getValue()}',
       )
     ];
   }
 }
 
-class Chart extends StatelessWidget {
+class ChartJavaMemory extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
 
-  Chart(this.seriesList, {this.animate});
+  ChartJavaMemory(this.seriesList, {this.animate});
 
-  factory Chart.withData(List<charts.Series<SeriesData, int>> data) {
-    return new Chart(
+  factory ChartJavaMemory.withData(List<charts.Series<SeriesData, int>> data) {
+    return new ChartJavaMemory(
       data,
       animate: true,
     );
@@ -237,7 +237,31 @@ class Chart extends StatelessWidget {
   Widget build(BuildContext context) {
     return new charts.PieChart(seriesList,
         animate: animate,
-        defaultRenderer: new charts.ArcRendererConfig(arcWidth: 100,
+        defaultRenderer: new charts.ArcRendererConfig(
+            arcWidth: 110,
+            arcRendererDecorators: [new charts.ArcLabelDecorator()]));
+  }
+}
+
+class ChartPsycalMemory extends StatelessWidget {
+  final List<charts.Series> seriesList;
+  final bool animate;
+
+  ChartPsycalMemory(this.seriesList, {this.animate});
+
+  factory ChartPsycalMemory.withData(List<charts.Series<SeriesData, int>> data) {
+    return new ChartPsycalMemory(
+      data,
+      animate: true,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new charts.PieChart(seriesList,
+        animate: animate,
+        defaultRenderer: new charts.ArcRendererConfig(
+            arcWidth: 110,
             arcRendererDecorators: [new charts.ArcLabelDecorator()]));
   }
 }
@@ -247,4 +271,12 @@ class SeriesData {
   final int amount;
 
   SeriesData(this.all, this.amount);
+
+  String getTitle(){
+    return all == 1 ? "Used" : "Free";
+  }
+
+  String getValue(){
+    return (amount/1024/1024).round().toString() + " MiB";
+  }
 }
