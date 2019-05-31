@@ -64,7 +64,10 @@ class ListItemView extends StatelessWidget {
         contentPadding: EdgeInsets.all(5),
         leading: (Image.network(app.pic)),
         title: Text(app.name,
-            style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2)),
+            style: DefaultTextStyle
+                .of(context)
+                .style
+                .apply(fontSizeFactor: 2)),
         subtitle: Text(app.url),
         trailing: IconButton(
             icon: Icon(Icons.arrow_forward_ios),
@@ -73,7 +76,8 @@ class ListItemView extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailViewStatefull(
+                    builder: (context) =>
+                        DetailViewStatefull(
                           app: this.app,
                         )),
               );
@@ -187,17 +191,31 @@ class DetailViewState extends State<DetailViewStatefull> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          app.name,
+        appBar: AppBar(
+          title: Text(
+            app.name,
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.green,
         ),
-        centerTitle: true,
-        backgroundColor: Colors.green,
-      ),
-      body: Center(
-          child: ChartJavaMemory.withData(createData(
-              _javaTotalMemory - _javaFreeMemory, _javaTotalMemory))),
-    );
+        body: ListView(padding: const EdgeInsets.all(8.0), children: <Widget>[
+            Container(
+            height: 400,
+            child: ChartJavaMemory.withData(createData(
+                _javaTotalMemory - _javaFreeMemory, _javaTotalMemory))),
+        Container(
+            height: 400,
+            child: ChartPsycalMemory.withData(createData(
+                _totalPhysicalMemory - _freePhysicalMemorySize,
+                _totalPhysicalMemory))),
+        Center(
+            child: Container(
+                height: 100,
+                child: Text(
+                    "Počet aktivních sessions: ${_activeSessions}", style: new
+                TextStyle(
+                  fontSize: 25.0,))))
+            ]));
   }
 
   List<charts.Series<SeriesData, int>> createData(int part, int total) {
@@ -214,7 +232,8 @@ class DetailViewState extends State<DetailViewStatefull> {
         domainFn: (SeriesData sales, _) => sales.all,
         measureFn: (SeriesData sales, _) => sales.amount,
         data: data,
-        labelAccessorFn: (SeriesData row, _) => '${row.getTitle()}: ${row.getValue()}',
+        labelAccessorFn: (SeriesData row, _) =>
+        '${row.getTitle()}: ${row.getValue()}',
       )
     ];
   }
@@ -249,7 +268,8 @@ class ChartPsycalMemory extends StatelessWidget {
 
   ChartPsycalMemory(this.seriesList, {this.animate});
 
-  factory ChartPsycalMemory.withData(List<charts.Series<SeriesData, int>> data) {
+  factory ChartPsycalMemory.withData(
+      List<charts.Series<SeriesData, int>> data) {
     return new ChartPsycalMemory(
       data,
       animate: true,
@@ -272,11 +292,11 @@ class SeriesData {
 
   SeriesData(this.all, this.amount);
 
-  String getTitle(){
+  String getTitle() {
     return all == 1 ? "Used" : "Free";
   }
 
-  String getValue(){
-    return (amount/1024/1024).round().toString() + " MiB";
+  String getValue() {
+    return (amount / 1024 / 1024).round().toString() + " MiB";
   }
 }
