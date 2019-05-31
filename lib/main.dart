@@ -64,10 +64,7 @@ class ListItemView extends StatelessWidget {
         contentPadding: EdgeInsets.all(5),
         leading: (Image.network(app.pic)),
         title: Text(app.name,
-            style: DefaultTextStyle
-                .of(context)
-                .style
-                .apply(fontSizeFactor: 2)),
+            style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2)),
         subtitle: Text(app.url),
         trailing: IconButton(
             icon: Icon(Icons.arrow_forward_ios),
@@ -76,8 +73,7 @@ class ListItemView extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        DetailViewStatefull(
+                    builder: (context) => DetailViewStatefull(
                           app: this.app,
                         )),
               );
@@ -190,6 +186,11 @@ class DetailViewState extends State<DetailViewStatefull> {
       );
     }
 
+    Future<void> _refresh() async
+    {
+      initState();
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -198,24 +199,25 @@ class DetailViewState extends State<DetailViewStatefull> {
           centerTitle: true,
           backgroundColor: Colors.green,
         ),
-        body: ListView(padding: const EdgeInsets.all(8.0), children: <Widget>[
-            Container(
-            height: 400,
-            child: ChartJavaMemory.withData(createData(
-                _javaTotalMemory - _javaFreeMemory, _javaTotalMemory))),
-        Container(
-            height: 400,
-            child: ChartPsycalMemory.withData(createData(
-                _totalPhysicalMemory - _freePhysicalMemorySize,
-                _totalPhysicalMemory))),
-        Center(
-            child: Container(
-                height: 100,
-                child: Text(
-                    "Počet aktivních sessions: ${_activeSessions}", style: new
-                TextStyle(
-                  fontSize: 25.0,))))
-            ]));
+        body: new RefreshIndicator(
+        child:ListView(padding: const EdgeInsets.all(8.0), children: <Widget>[
+          Center(
+              child: Container(
+                  height: 50,
+                  child: Text("Počet aktivních sessions: ${_activeSessions}",
+                      style: new TextStyle(
+                        fontSize: 25.0,
+                      )))),
+          Container(
+              height: 400,
+              child: ChartJavaMemory.withData(createData(
+                  _javaTotalMemory - _javaFreeMemory, _javaTotalMemory))),
+          Container(
+              height: 400,
+              child: ChartPsycalMemory.withData(createData(
+                  _totalPhysicalMemory - _freePhysicalMemorySize,
+                  _totalPhysicalMemory))),
+        ]), onRefresh: _refresh,));
   }
 
   List<charts.Series<SeriesData, int>> createData(int part, int total) {
@@ -233,7 +235,7 @@ class DetailViewState extends State<DetailViewStatefull> {
         measureFn: (SeriesData sales, _) => sales.amount,
         data: data,
         labelAccessorFn: (SeriesData row, _) =>
-        '${row.getTitle()}: ${row.getValue()}',
+            '${row.getTitle()}: ${row.getValue()}',
       )
     ];
   }
